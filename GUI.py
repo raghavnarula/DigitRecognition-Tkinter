@@ -41,7 +41,6 @@ def activate_event(event):
 
 cv.bind('<Button-1>', activate_event)
 
-
 def Recognize_Digit():
     global image_number
     filename = f'img_{image_number}.png'
@@ -50,8 +49,8 @@ def Recognize_Digit():
     print(root.winfo_rooty(),widget.winfo_rooty())
     widget.update()
     root.update()
-    x = root.winfo_rootx() # + widget.winfo_rootx()
-    y = root.winfo_rooty() # + widget.winfo_rooty()
+    x = root.winfo_rootx()
+    y = root.winfo_rooty()
     x1 = x + widget.winfo_width() 
     y1 = y + widget.winfo_height() - 50
     print(x, y, x1, y1)
@@ -64,7 +63,6 @@ def Recognize_Digit():
     ret, th = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
 
     contours = cv2.findContours(th, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[0]
-    # print(len(contours[0]))
     for cnt in contours:
         x, y, w, h = cv2.boundingRect(cnt)
         # make a rectangle box around each curve
